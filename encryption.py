@@ -46,7 +46,7 @@ class Encryption:
 
         :param initial_text_path: путь до исходного текста
         :param encrypt_text_path: путь до зашифрованного текста
-        :param iv_path: путь для сохранения ключа шифрования текста
+        :param iv_path: путь для сохранения векторa блочного режимв
         :return: None
         """
         key = self.decryption_of_symmetric_key()
@@ -62,7 +62,7 @@ class Encryption:
         try:
             with open(iv_path, 'wb') as key_file:
                 key_file.write(iv)
-            logging.info('Ключ для шифрования текста прочитан')
+            logging.info('Вектор блочного режимв создан')
         except OSError as err:
             logging.warning(f'{err} ошибка чтении из файла {iv_path}')
         cipher = Cipher(algorithms.SEED(key), modes.CBC(iv))

@@ -15,7 +15,7 @@ def text_decryption(private_key_path: str, symmetric_key_path: str,
     :param symmetric_key_path: путь до симметричного ключа
     :param encrypt_file_path: путь до зашифрованного текста
     :param decrypt_file_path: путь до расщифрованного текста
-    :param iv_path: путь для чтения ключа шифрования текста
+    :param iv_path: инициализационный вектор блочного режимв
     :return: None
     """
 
@@ -28,7 +28,7 @@ def text_decryption(private_key_path: str, symmetric_key_path: str,
     try:
         with open(iv_path, "rb") as f:
             iv = f.read()
-        logging.info('Ключ для дешифрации прочитан')
+        logging.info('Вектор был создан')
     except OSError as err:
         logging.warning(f'{err} ошибка чтении из файла {iv_path}')
 
